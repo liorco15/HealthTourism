@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <center>
-<img href="https://imgbb.com/"><img src="https://i.ibb.co/tKPjsCh/pic.jpg" alt="pic" border="0"></img>
-
+<a href="/">
+  <img src="https://i.ibb.co/tKPjsCh/pic.jpg"  alt="Health Tourism" border="0">
+</a>
 </center>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -54,7 +55,7 @@ input[type=submit]:hover {
 <!--    <input id="join" type="text" name="join" value="{{ join }}">-->
 <!--</form>-->
 
-<form method="POST" action="{% url 'contact' %}">
+<form method="POST" action="{% url 'signup' %}">
   {% csrf_token %}
 <div class="imgcontainer"></div>
 <div class="container">

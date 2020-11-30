@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title>יצירת שם משתמש וסיסמא חדשים</title>
 </head>
-<img href="https://imgbb.com/"><img src="https://i.ibb.co/tKPjsCh/pic.jpg" alt="pic" border="0"></img>
+
+<a href="/">
+  <img src="https://i.ibb.co/tKPjsCh/pic.jpg"  alt="Health Tourism" border="0">
+</a>
 <body>
 <h2>יצירת שם משתמש וסיסמא חדשים</h2>
 
 <!--<form action="action_page.php" method="POST">-->
-<form method="POST" action="{% url 'join' %}">
+<form method="POST" action="{% url 'create' %}">
   {% csrf_token %}
   <div class="imgcontainer">
 
@@ -22,7 +25,7 @@
     <label for="last_name"><b>Password</b></label>
     <input type="last_name" placeholder="Enter Password" name="last_name" required>
 
-    <button type="submit">Login</button>
+    <button type="submit">Submit</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

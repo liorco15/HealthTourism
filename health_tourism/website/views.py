@@ -1,40 +1,39 @@
 from django.shortcuts import render
-from .models import Patient
-from .forms import PatientForm
-from .models import Contact
-from .forms import ContactForm
+from .forms import CreateUserForm
+from .forms import SignUpForm
+from .forms import FeedbackForm
 
 
 def login(request):
-    all_patients = Patient.objects.all
-    return render(request, 'login.html', {'all':all_patients})
+    return render(request, 'login.html', {})
 
 
-def join(request):
+def create(request):
     if request.method == "POST":
-        form = PatientForm(request.POST or None)
+        form = CreateUserForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return render(request, 'join.html', {})
+        return render(request, 'create.html', {})
     else:
-        return render(request, 'join.html', {})
+        return render(request, 'create.html', {})
 
 
-def contact(request):
+def signup(request):
     if request.method == "POST":
-        form = ContactForm(request.POST or None)
+        form = SignUpForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return render(request, 'join.html', {})
+        return render(request, 'signup.html', {})
     else:
-        return render(request, 'contact.html', {})
+        return render(request, 'signup.html', {})
 
 
-def search(request):
+def feedback(request):
     if request.method == "POST":
-        form = ContactForm(request.POST or None)
+        form = FeedbackForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return render(request, 'join.html', {})
+            return render(request, 'login.html', {})
+        return render(request, 'feedback.html', {})
     else:
-        return render(request, 'search.html', {})
+        return render(request, 'feedback.html', {})
