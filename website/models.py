@@ -7,6 +7,7 @@ class Patient(models.Model):
     """
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
+    objects = models.Manager()
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -31,7 +32,7 @@ class SignUp(models.Model):
 
 class Feedback(models.Model):
     """
-    Feed backs messages from the patients.
+    Feedback messages from the patients.
     """
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
