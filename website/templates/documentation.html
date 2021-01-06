@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+{%block content%}
+    <h1>New patient meeting </h1>
+
+    <!DOCTYPE html>
+        <form action="/action_page.php">
+          <label for="datemax">Enter Meeting date:</label>
+          <input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>
+            <label for="lname">First name:</label><br>
+          <input type="text" id="lname" name="lname"><br>
+             <label for="lname">Last name:</label><br>
+          <input type="text" id="lname" name="lname"><br><br><br>
+
+          <label for="fname">Reason for contacting a doctor:</label><br>
+        <form action="/action_page.php">
+          <textarea name="message" rows="10" cols="25
+        ">The cat was playing in the garden.</textarea>
+          <br><br>
+            <label for="fname">Physical examination:</label><br>
+        <form action="/action_page.php">
+          <textarea name="message" rows="5" cols="20
+        ">The cat was playing in the garden.</textarea>
+          <br><br>
+            <label for="fname">Meeting documentation:</label><br>
+        <form action="/action_page.php">
+          <textarea name="message" rows="25" cols="150
+        ">The cat was playing in the garden.</textarea>
+          <br><br>
+            <label for="fname">diagnosis:</label><br>
+        <form action="/action_page.php">
+          <textarea name="message" rows="5" cols="20
+        ">The cat was playing in the garden.</textarea>
+          <br><br>
+            <input type="submit" value="Save">
+            <input type="submit" value="Save and Print">
+        </form>
+
+
+{%endblock%}

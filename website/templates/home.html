@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%block content%}
+  <h1> Events </h1>
+
+  {% for item in all %}
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <style>
+
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
+      </head>
+      <body>
+      <table style="width:100%">
+        <tr>
+          <th>Date:{{item.date}} </th>
+        <tr>
+          <th>{{item.name}}</th>
+        </tr>
+        <tr>
+
+      </table>
+
+      </body>
+      </html>
+  {% endfor %}
+{%endblock%}
