@@ -70,7 +70,10 @@ span.psw {
 
 <h2>Health Tourism</h2>
 
-<!--<form action="/action_page.php" method="post">-->
+{% if messages %}
+  {{ message }}
+{% endif %}
+
 <form method="POST" action="{% url 'create' %}">
   {% csrf_token %}
   <div class="imgcontainer">

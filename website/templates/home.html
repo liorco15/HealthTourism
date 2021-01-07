@@ -1,0 +1,61 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<br>
+<br>
+
+  <div class="col-md-4">
+      <h5>search for patients</h5>
+      <form method="POST" action="{% url 'search' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="Search..." name="search">
+          <div class="col-12">
+              <br>
+    <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </form>
+  </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+  <h1> Events </h1>
+
+  {% for item in events %}
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <style>
+
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
+      </head>
+      <body>
+      <table style="width:100%">
+        <tr>
+          <th>Date:{{item.date}} </th>
+        <tr>
+          <th>{{item.name}}</th>
+        </tr>
+        <tr>
+
+      </table>
+      </body>
+      </html>
+     {% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1> new messages </h1>
+    {% for x in messages %}
+    <div class="alert alert-secondary" role="alert">
+      {{x.new_message}}
+    </div>
+     {% endfor %}
+    {%endblock%}

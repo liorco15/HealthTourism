@@ -1,7 +1,5 @@
 from django import forms
-from .models import Patient
-from .models import SignUp
-from .models import Feedback
+from .models import Patient, SignUp, Feedback, Event
 
 
 class CreateUserForm(forms.ModelForm):
@@ -26,3 +24,9 @@ class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
         fields = ['first_name']
+
+
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ['name','date']

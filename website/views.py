@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from health_tourism.functions import full_name_fix, name_fix
-from .forms import CreateUserForm, SignUpForm, FeedbackForm, Patient
+from .forms import CreateUserForm, SignUpForm, FeedbackForm, Patient, EventForm
+from .models import Event, Messages
 
 
 def login(request):
@@ -24,7 +26,8 @@ def signup(request):
         form = SignUpForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return render(request, 'signup.html', {})
+        messages.success(request, "Your request has been successfully submitted!")
+        return redirect('login.html')
     else:
         return render(request, 'signup.html', {})
 
@@ -76,3 +79,9 @@ def search(request):
             return render(request, 'search.html', {'patients': msg})
     else:
         return render(request, 'search.html', {})
+
+
+def home(request):
+    all_messages = Messages.objects.all
+    all_events = Event.objects.all
+    return render(request, 'home.html', {'events': all_events, 'messages': all_messages})
