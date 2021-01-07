@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <div class="imgcontainer">
+   <a href="/">
+  <img src="http://www.up2me.co.il/imgs/47569287.jpg"  alt="Health Tourism" border="0">
+</a>
+  </div>
+</head>
+<body>
+
+<h2>Leave a feedback </h2>
+<form method="POST" action="{% url 'feedback' %}">
+  {% csrf_token %}
+<!--<form action="/action_page.php">-->
+<form>
+  <label for="first_name">First name:</label><br>
+  <input type="text" id="first_name" name="first_name" value=""><br>
+  <label for="last_name">Last name:</label><br>
+  <input type="text" id="last_name" name="last_name" value=""><br><br>
+ <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
+
+
+  <input type="submit" value="Submit">
+</form>
+</form>
+
+
+
+</body>
+</html>
