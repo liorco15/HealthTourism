@@ -1,0 +1,65 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<br>
+<br>
+
+<form class="row g-3">
+  <div class="col-md-6">
+
+    <label for="inputPassword4" class="form-label">Patient Search</label>
+    <input type="password" class="form-control" id="inputPassword4">
+  </div>
+      <div class="col-12">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+  <h1> Events </h1>
+
+  {% for item in all %}
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <style>
+
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
+      </head>
+      <body>
+      <table style="width:100%">
+        <tr>
+          <th>Date:{{item.date}} </th>
+        <tr>
+          <th>{{item.name}}</th>
+        </tr>
+        <tr>
+
+      </table>
+      </body>
+      </html>
+     {% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1> new massages </h1>
+    {% for x in all %}
+
+
+    <div class="alert alert-primary" role="alert">
+    </div> {{x.new_massage}}
+    <div class="alert alert-secondary" role="alert">
+      {{x.new_massage}}
+    </div>
+        <tr>
+     {% endfor %}
+    {%endblock%}
