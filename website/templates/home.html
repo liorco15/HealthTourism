@@ -1,0 +1,113 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<!-- <div class="col-md-4">-->
+<!--      <h5>search for patients</h5>-->
+<!--      <form method="POST" action="{% url 'search' %}">-->
+<!--      {% csrf_token %}-->
+<!--      <input type="text" placeholder="Search..." name="search">-->
+<!--          <div class="col-12">-->
+<!--              <br>-->
+<!--    <button type="submit" class="btn btn-primary">Search</button>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--  </div>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <form method="POST" action="{% url 'feedback' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary">Leave feedback </button>
+          &nbsp;&nbsp;
+          </form>
+         </li>
+
+        <li class="nav-item">
+         <form method="POST" action="{% url 'create' %}">
+          {% csrf_token %}
+         <button type="submit" class="btn btn-outline-primary">Create user</button>
+          &nbsp;&nbsp;
+         </form>
+        </li>
+
+        <li class="nav-item">
+           <form method="POST" action="{% url 'Appointment' %}">
+            {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary"> Create new appointment</button>&nbsp;&nbsp;
+            &nbsp;&nbsp;
+           </form>
+        </li>
+          <li class="nav-item">
+          <form method="POST" action="{% url 'documentation' %}">
+              {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary"> Create Patient documentation</button>&nbsp;&nbsp;
+            &nbsp;&nbsp;
+           </form>
+
+
+          <li class="nav-item">
+          <button type="submit" class="btn btn-outline-primary">Create new message</button>
+          &nbsp;&nbsp;
+        </li>
+      </ul>
+      <div class="d-flex">
+        <form method="POST" action="{% url 'search' %}">
+            {% csrf_token %}
+        <input class="form-control me-1" type="text" placeholder="search..." name="search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+    </div>
+  </div>
+</nav>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <h1> Events </h1>
+
+  {% for item in events %}
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <style>
+
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
+      </head>
+      <body>
+      <table style="width:100%">
+        <tr>
+          <th>Date:{{item.date}} </th>
+        <tr>
+          <th>{{item.name}}</th>
+        </tr>
+        <tr>
+
+      </table>
+      </body>
+      </html>
+     {% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1> new messages </h1>
+    {% for x in messages %}
+    <div class="alert alert-secondary" role="alert">
+      {{x.new_message}}
+    </div>
+     {% endfor %}
+    {%endblock%}
