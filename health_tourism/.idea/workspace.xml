@@ -30,7 +30,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/templates" />
+    <property name="last_opened_file_path" value="G:/האחסון שלי/הנדסת תוכנה שנה א/שנה ב/סמסטר א/יסודות הנדסת תוכנה/פרויקט/גיבוי" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -88,6 +88,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.hw2-" />
+      <item itemvalue="Python.manage" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.hw2-" />

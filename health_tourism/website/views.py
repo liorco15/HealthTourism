@@ -1,12 +1,24 @@
-from .forms import SignUpForm, FeedbackForm
-from .models import Patient
-from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect
-from django.views import generic
-from django.contrib.auth.forms import UserCreationForm
-from members.forms import UserLoginForm, UserRegisterForm
-from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from django.urls import reverse_lazy
+from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q
+from health_tourism.functions import full_name_fix, name_fix
+from .forms import CreateUserForm, SignUpForm, FeedbackForm, Patient, EventForm, MessageForm
+from .models import Event, Messages
+
+
+def login(request):
+    return render(request, 'login.html', {})
+
+
+def create(request):
+    if request.method == "POST":
+        form = CreateUserForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+        return render(request, 'create.html', {})
+    else:
+        return render(request, 'create.html', {})
 
 
 def signup(request):
@@ -14,9 +26,10 @@ def signup(request):
         form = SignUpForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return render(request, 'register.html', {})
+        messages.success(request, "Your request has been successfully submitted!")
+        return redirect('login.html')
     else:
-        return render(request, 'register.html', {})
+        return render(request, 'signup.html', {})
 
 
 def feedback(request):
@@ -24,13 +37,63 @@ def feedback(request):
         form = FeedbackForm(request.POST or None)
         if form.is_valid():
             form.save()
-            return render(request, 'home.html', {})
+            return render(request, 'login.html', {})
         return render(request, 'feedback.html', {})
     else:
         return render(request, 'feedback.html', {})
 
 
-def profil(request):
-    my_profil = Patient.objects.all
-    return render(request, 'profil.html', {'all': my_profil})
+def search(request):
+    """
+    search patient panel
+    :param request: user  input
+    :return: result of patients
+    """
+    if request.method == "POST":
+        try:
+            # search both first and last name
+            patient = request.POST.get('search')
+            user_search = Patient.objects.filter(
+                Q(first_name=full_name_fix(patient)[0]) & Q(last_name=full_name_fix(patient)[1]))
+            return render(request, 'search.html', {'patients': user_search})
+        except IndexError:
+            pass
+        try:
+            # search by first name
+            patient = request.POST.get('search')
+            user_search = Patient.objects.filter(first_name=name_fix(patient))
+            if len(user_search) > 0:
+                return render(request, 'search.html', {'patients': user_search})
+        except IndexError:
+            pass
+        try:
+            # search by last name
+            patient = request.POST.get('search')
+            user_search = Patient.objects.filter(last_name=name_fix(patient))
+            if len(user_search) > 0:
+                return render(request, 'search.html', {'patients': user_search})
+            else:
+                msg = "The user does not exist."
+                return render(request, 'search.html', {'patients': msg})
+        except IndexError:
+            msg = "The user does not exist."
+            return render(request, 'search.html', {'patients': msg})
+    else:
+        return render(request, 'search.html', {})
 
+
+def home(request):
+    all_messages = Messages.objects.all
+    all_events = Event.objects.all
+    return render(request, 'home.html', {'events': all_events, 'messages': all_messages})
+
+
+def contact_doctor(request):
+    if request.method == "POST":
+        form = MessageForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return render(request, 'home.html', {})
+        return render(request, 'contact_doctor.html', {})
+    else:
+        return render(request, 'contact_doctor.html', {})

@@ -1,14 +1,11 @@
 from django import forms
-from django.contrib.auth import authenticate, get_user_model
-from .models import Patient
-from .models import SignUp
-from .models import Feedback
+from .models import Patient, SignUp, Feedback, Event, Messages
 
 
-# class CreateUserForm(forms.ModelForm):
-#     class Meta:
-#         model = Patient
-#         fields = ['first_name', 'last_name']
+class CreateUserForm(forms.ModelForm):
+    class Meta:
+        model = Patient
+        fields = ['first_name', 'last_name']
 
 
 class SignUpForm(forms.ModelForm):
@@ -22,32 +19,20 @@ class FeedbackForm(forms.ModelForm):
         model = Feedback
         fields = ['first_name', 'last_name', 'message']
 
-#
-# User = get_user_model()
 
-#
-# class UserLoginForm(forms.Form):
-#     username = forms.CharField()
-#     password = forms.CharField(widget=forms.PasswordInput)
-#
-#     def clean(self, *args, **kwargs):
-#         username = self.cleaned_data.get('username')
-#         password = self.cleaned_data.get('password')
-#
-#         if username and password:
-#             user = authenticate(username=username, password=password)
-#             if not user:
-#                 raise forms.ValidationError('user not found')
-#             if not user.check_password(password):
-#                 raise forms.ValidationError('Wrong Password, please try again')
-#
-#             return super(UserLoginForm, self).clean(*args, **kwargs)
-#
-#
-# class UserRegisterForm(forms.ModelForm):
-#     username = forms.CharField()
-#     password = forms.CharField(widget=forms.PasswordInput)
-#
-#     class Meta:
-#         model = User
-#         fields = ['username', 'password']
+class PatientForm(forms.ModelForm):
+    class Meta:
+        model = Patient
+        fields = ['first_name']
+
+
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ['name', 'date']
+
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Messages
+        fields = ['subject', 'new_message']

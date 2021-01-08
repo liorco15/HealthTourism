@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>contact your doctor</title>
+</head>
+<h1><center>Dear Patient,</center></h1>
+<h2><center>To contact your doctor, Please fill in the following data:</center></h2>
+<hr>
+<body>
+
+<form method="POST" >
+  {% csrf_token %}
+<!--<form action="/action_page.php">-->
+<form>
+    <font size= "5" color="black">
+  <label for="subject">subject:</label><br>
+  <input type="text" id="subject" name="subject" value=""><br>
+        <label for="new_message">message:</label><br>
+ <textarea id="new_message" name="new_message" placeholder="Write something.." style="height:200px"></textarea>
+
+</font>
+  <input type="submit" value="Submit">
+</form>
+</form>
+</form>
+
+
+</body>
+</html>
