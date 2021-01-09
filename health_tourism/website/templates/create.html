@@ -3,28 +3,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>יצירת שם משתמש וסיסמא חדשים</title>
+    <title>Create new user name</title>
 </head>
 
-<a href="/">
-  <img src="https://i.ibb.co/tKPjsCh/pic.jpg"  alt="Health Tourism" border="0">
-</a>
-<h2>יצירת שם משתמש וסיסמא חדשים</h2>
+<div class="topnav">
+  <a class="active" href="home">Home</a>
+</div>
+<h2>Create new user name</h2>
 
 <!--<form action="action_page.php" method="POST">-->
 <form method="POST" action="{% url 'create' %}">
   {% csrf_token %}
   {{ form.as_p }}
   <div class="imgcontainer">
-
   </div>
-
+<label for="first_name">First name:</label><br>
+  <input type="text" id="first_name" name="first_name" value=""><br>
+  <label for="last_name">Last name:</label><br>
+  <input type="text" id="last_name" name="last_name" value=""><br><br>
   <div class="container">
-<!--    <label for="first_name"><b>Username</b></label>-->
-<!--    <input type="text" placeholder="Enter Username" name="first_name" required>-->
-
-<!--    <label for="last_name"><b>Password</b></label>-->
-<!--    <input type="last_name" placeholder="Enter Password" name="last_name" required>-->
 
     <button type="submit">Submit</button>
   </div>

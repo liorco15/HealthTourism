@@ -17,7 +17,7 @@
   </component>
   <component name="ProjectId" id="1kxchWyIamj3UIQ7Foa2rP2j5V4" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/manage.py" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/avihai/health_tourism" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
   </component>
   <component name="RecentsManager">
@@ -38,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tests.models">
+  <component name="RunManager" selected="Python.views (1)">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="health_tourism" />
       <option name="INTERPRETER_OPTIONS" value="" />

@@ -1,6 +1,9 @@
 {%extends 'base.html'%}
 {%block content%}
-
+<title>New documentation</title>
+<div class="topnav">
+  <a class="active" href="home">Home</a>
+</div>
 <h1>New documentation for a meeting </h1>
 <form method="POST" action="{% url 'documentation' %}">
     {% csrf_token %}

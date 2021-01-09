@@ -1,17 +1,12 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from health_tourism.functions import full_name_fix, name_fix
-from .forms import CreateUserForm, SignUpForm, FeedbackForm, Patient, EventForm, DocumentationP, MessageForm
+from .forms import SignUpForm, FeedbackForm, Patient, EventForm, DocumentationP, MessageForm, UserLoginForm
 from .models import Event, Messages, Documentation, Profile
-
-
-def login(request):
-    return render(request, 'login.html', {})
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def create(request):
@@ -149,3 +144,23 @@ def contact_doctor(request):
         return render(request, 'contact_doctor.html', {})
 
 
+def login_view(request):
+    next = request.GET.get('next')
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        if next:
+            return redirect(next)
+        return redirect('home/')
+    context = {
+        'form': form,
+    }
+    return render(request, "login.html", context)
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
