@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+      <h2>Minestry Of Health</h2>
+      <img src="https://www.gov.il/BlobFolder/office/ministry_of_health/he/ministry_of_health.png" alt="Avatar" class="avatar">
+    </div>
+
+      <form method="POST" action="{% url 'request_m' %}">
+  {% csrf_token %}
+    <div class="container">
+      <p><label for="subject"><b> Subject: </b></label></p>
+      <input type="text" placeholder="write..." name="subject" required>
+              <p><label for="full_name"><b> Full name: </b></label></p>
+      <input type="text" placeholder="write..." name="full_name" required>
+              <p><label for="passport_num"><b> Passport number: </b></label></p>
+      <input type="text" placeholder="write..." name="passport_num" required>
+      <p><label for="request"><b> Write a request: </b></label></p>
+      <textarea type="request" placeholder="write..." style="height:180px" name="request" required></textarea>
+
+      <button type="submit"> Send a request </button>
+
+    </div>
+
+        <div class="container">
+<button class="btn"><i class="fa fa-folder"></i> Load a file </button>
+    </div>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn"> Back </button>
+
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
+{%endblock%}

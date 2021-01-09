@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>יצירת שם משתמש וסיסמא חדשים</title>
+</head>
+
+<a href="/">
+  <img src="https://i.ibb.co/tKPjsCh/pic.jpg"  alt="Health Tourism" border="0">
+</a>
+<h2>יצירת שם משתמש וסיסמא חדשים</h2>
+
+<!--<form action="action_page.php" method="POST">-->
+<form method="POST" action="{% url 'create' %}">
+  {% csrf_token %}
+  <div class="imgcontainer">
+
+  </div>
+
+  <div class="container">
+    <label for="first_name"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="first_name" required>
+
+    <label for="last_name"><b>Password</b></label>
+    <input type="last_name" placeholder="Enter Password" name="last_name" required>
+
+    <button type="submit">Submit</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+
+    <span class="last_name">Forgot <a href="#">last_name?</a></span>
+  </div>
+</form>
+
+{%endblock%}
