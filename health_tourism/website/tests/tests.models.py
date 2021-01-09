@@ -77,21 +77,21 @@ class BasicTest(TestCase):
 
     def test_mark_completed(self):
         self.assertEqual(self.item.completed, False)
-        self.item.mark.completed()
+        self.item.mark.completend()
         self.assertEqual(self.item.completed, True)
 
         self.assertEqual(self.item1.completed, False)
-        self.item1.mark.completed()
+        self.item1.mark.completend()
         self.assertEqual(self.item1.completed, True)
 
         self.assertEqual(self.item2.completed, False)
-        self.item2.mark.completed()
+        self.item2.mark.completend()
         self.assertEqual(self.item2.completed, True)
 
         self.assertEqual(self.item3.completed, False)
-        self.item3.mark.completed()
+        self.item3.mark.completend()
         self.assertEqual(self.item3.completed, True)
 
         self.assertEqual(self.item4.completed, False)
-        self.item4.mark.completed()
+        self.item4.mark.completend()
         self.assertEqual(self.item4.completed, True)

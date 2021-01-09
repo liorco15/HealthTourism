@@ -14,6 +14,7 @@
 <!--<form action="action_page.php" method="POST">-->
 <form method="POST" action="{% url 'create' %}">
   {% csrf_token %}
+   {{ form.as_p }}
   <div class="imgcontainer">
 
   </div>

@@ -1,11 +1,11 @@
 from django import forms
-from .models import Patient, SignUp, Feedback, Event, Documentation, Messages
+from .models import Patient, SignUp, Feedback, Event, Documentation, Messages, Profile
 
 
 class CreateUserForm(forms.ModelForm):
     class Meta:
-        model = Patient
-        fields = ['first_name', 'last_name']
+        model = Profile
+        fields = ['first_name', 'last_name', 'birth_date', 'gender', 'email', 'phone_number', 'country']
 
 
 class SignUpForm(forms.ModelForm):

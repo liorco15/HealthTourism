@@ -100,7 +100,8 @@ body {
     <li class="nav-item">
          <form method="POST" action="{% url 'history' %}">
           {% csrf_token %}
-         <button type="submit" class="btn btn-outline-primary"><br>{{ item.first_name }} {{ item.last_name }}</br>
+        <input type="hidden" name="user_name" value="{{ item.first_name }}">
+         <button type="submit" class="btn btn-outline-primary" name="user_name" value="{{ item.first_name }} {{item.last_name}}"><br>{{ item.first_name }} {{ item.last_name }}</br>
          </button>
           &nbsp;&nbsp;
 
