@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<h1> Document your last appointment </h1>
+
+  {% for item in history %}
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <style>
+
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
+      </head>
+      <body>
+      <div class="alert alert-secondary" role="alert">
+            <th>name: {{item.first_name}}
+              {{item.last_name}}<br><br>
+            </th>
+          <div class="alert alert-dark" role="alert">
+            <th>Reason for contacting a doctor: {{item.reason_why}}<br><br>
+            </th>
+          </div>
+             <div class="alert alert-dark" role="alert">
+            <th>Meeting documentation: {{item.meeting}}<br><br>
+            </th>
+          </div>
+            <div class="alert alert-dark" role="alert">
+            <th>diagnosis: {{item.diagnosis}}<br><br>
+            </th>
+          </div>
+      </div>
+          </div>
+      </table>
+      </body>
+      </html>
+</form>
+
+    {% endfor %}
+{%endblock%}
