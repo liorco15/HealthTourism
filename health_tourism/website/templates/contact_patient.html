@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{%block content%}
+
+    <meta charset="UTF-8">
+    <title>contact patient</title>
+
+<h2><center>To contact your patient, Please fill in the following data:</center></h2>
+
+<form method="POST" action="{% url 'contact_doctor' %}">
+  {% csrf_token %}
+
+  <label for="subject">subject:</label><br>
+  <input type="text" id="subject" name="subject" value=""><br>
+        <label for="new_message">message:</label><br>
+ <textarea id="new_message" name="new_message" placeholder="Write something.." style="height:200px"></textarea>
+
+  <input type="submit" value="Submit">
+</form>
+
+{%endblock%}

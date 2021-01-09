@@ -13,5 +13,6 @@ urlpatterns = [
     path('documentation', views.documentation, name="documentation"),
     path('history', views.history, name="history"),
     path('home/contact_doctor', views.contact_doctor, name="contact_doctor"),
+    path('home/contact_patient', views.contact_patient, name="contact_patient"),
     path('home/edit_profil', views.edit_profil, name="edit_profil"),
 ]

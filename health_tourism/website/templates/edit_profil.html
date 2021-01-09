@@ -2,6 +2,9 @@
  <h1>Edit Profile</h1>
  <h3>Personal info</h3>
 
+  <form method="POST" action="{% url 'edit_profil' %}">
+  {% csrf_token %}
+
         <form class="form-horizontal" role="form">
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
@@ -47,3 +50,5 @@
         </form>
       </div>
 <hr>
+
+{%endblock%}

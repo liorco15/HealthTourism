@@ -47,4 +47,4 @@ class MessageForm(forms.ModelForm):
 class EditProfil(forms.ModelForm):
     class Meta:
         model = Edit
-        fields = ['First name:', 'Last name:', 'Email:', 'Username:', 'Password:', 'Confirm password:']
+        fields = ['First name:', 'Last name:', 'Email:', 'Username:', 'Password:']

@@ -1,3 +1,10 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+def add_numbers(first, second):
+    return first + second
+
+
+def test_add_numbers():
+    assert add_numbers(5, 3) == 8
+

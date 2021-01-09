@@ -24,10 +24,13 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/templates" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Inbar.HASON-5\Desktop\project29\health_tourism\website\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\djangodb\health_tourism\website\templates" />
       <recent name="C:\djangodb\health_tourism\members\Templates" />
@@ -99,8 +102,8 @@
     </configuration>
     <list>
       <item itemvalue="Python.manage" />
-      <item itemvalue="Python.views" />
       <item itemvalue="Python.views (1)" />
+      <item itemvalue="Python.views" />
     </list>
     <recent_temporary>
       <list>

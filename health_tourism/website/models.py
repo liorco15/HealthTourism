@@ -85,7 +85,7 @@ class Event(Timestamped):
 
 class Messages(models.Model):
     """
-    Patient contact Doctor.
+    Patient contact Doctor / Doctor contact Patient
     """
     objects = None
     subject = models.CharField(max_length=20, default='SOME STRING')

@@ -13,5 +13,5 @@ def full_name_fix(s):
 def name_fix(s):
     # input of first or last name only
     fname = s.split(' ')[0]
-    first_letter = fname[0].upper()      # first letter of the first name
+    first_letter = fname[0].upper()  # first letter of the first name
     return first_letter + fname[1:]

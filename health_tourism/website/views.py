@@ -125,6 +125,17 @@ def contact_doctor(request):
         return render(request, 'contact_doctor.html', {})
 
 
+def contact_patient(request):
+    if request.method == "POST":
+        form = MessageForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return render(request, 'home.html', {})
+        return render(request, 'contact_patient', {})
+    else:
+        return render(request, 'contact_patient', {})
+
+
 def edit_profil(request):
     if request.method == "POST":
         form = EditProfil(request.POST or None)
