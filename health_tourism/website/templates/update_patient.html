@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<title>User Edit</title>
+
+
+<nav class="navbar navbar-expand-lg">
+  <a class="active" href="home">Home</a>
+</nav>
+
+<form method="POST" action="{% url 'update_patient' %}">
+  {% csrf_token %}
+</form>
+
+
+<form>
+
+  <br>
+    <h3>Please complete the creation process for the user: {{ patient }}</h3>
+     <input type="hidden" name="user_name" value="{{ patient.passport }}">
+  <label for="first_name">First name:</label><br>
+    <input type="text" id="first_name" name="first_name" value=""><br>
+  <label for="last_name">Last name:</label><br>
+    <input type="text" id="last_name" name="last_name" value=""><br><br>
+   <label for="passport">Passport:</label><br>
+    <input type="text" id="passport" name="passport" value=""><br><br>
+   <button type="submit" class="btn btn-outline-primary">Create</button>
+</form>
+
+{%endblock%}

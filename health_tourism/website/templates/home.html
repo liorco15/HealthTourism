@@ -1,0 +1,124 @@
+{%extends 'base.html'%}
+{%block content%}
+<title>Health Tourism</title>
+
+<nav class="navbar navbar-expand-lg">
+  <a class="active" href="">Home</a>
+</nav>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <form method="POST" action="{% url 'feedback' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary">Leave feedback </button>
+          </form>
+         </li>
+        &nbsp;&nbsp;
+        <li class="nav-item">
+         <form method="POST" action="{% url 'create' %}">
+          {% csrf_token %}
+         <button type="submit" class="btn btn-outline-primary">Create user</button>
+         </form>
+        </li>
+        &nbsp;&nbsp;
+        <li class="nav-item">
+           <form method="POST" action="{% url 'appointment' %}">
+            {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary"> Create new appointment</button>&nbsp;&nbsp;
+            &nbsp;&nbsp;
+           </form>
+        </li>
+          &nbsp;&nbsp;
+          <li class="nav-item">
+          <form method="GET" action="{% url 'documentation' %}">
+              {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary"> Create Patient documentation</button>&nbsp;&nbsp;
+            &nbsp;&nbsp;
+           </form>
+          </li>
+          &nbsp;&nbsp;
+          <li class="nav-item">
+          <form method="POST" action="{% url 'contact_doctor' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary">Create new message</button>
+          &nbsp;&nbsp;
+            </form>
+        </li>
+          &nbsp;&nbsp;
+          <li class="nav-item">
+          <form method="POST" action="{% url 'request_m' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary">Send a request to minestry of health</button>
+          &nbsp;&nbsp;
+            </form>
+        </li>
+          &nbsp;&nbsp;
+          <li class="nav-item">
+          <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary">Logout</button>
+          &nbsp;&nbsp;
+            </form>
+        </li>
+      </ul>
+        &nbsp;&nbsp;
+      <div class="d-flex">
+        <form method="POST" action="{% url 'search' %}">
+            {% csrf_token %}
+        <input class="form-control me-1" type="text" placeholder="search..." name="search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+    </div>
+  </div>
+</nav>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <h1> Events </h1>
+
+  {% for item in events %}
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <style>
+
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
+      </head>
+      <body>
+      <table style="width:100%">
+        <tr>
+          <th>Date:{{item.date}} </th>
+        <tr>
+          <th>{{item.name}}</th>
+        </tr>
+        <tr>
+
+      </table>
+      </body>
+      </html>
+     {% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1> new messages </h1>
+    {% for x in messages %}
+    <div class="alert alert-secondary" role="alert">
+      {{x.subject}} {{x.new_message}}
+    </div>
+     {% endfor %}
+    {%endblock%}

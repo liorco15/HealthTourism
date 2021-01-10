@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<nav class="navbar navbar-expand-lg">
+  <a class="active" href="home">Home</a>
+</nav>
+    <meta charset="UTF-8">
+    <title>contact your doctor</title>
+
+<h3><center>Dear Patient,</center></h3>
+<h5><center>To contact your doctor, Please fill in the following data:</center></h5>
+
+<form method="POST" action="{% url 'contact_doctor' %}">
+  {% csrf_token %}
+
+  <label for="subject">subject:</label><br>
+  <input type="text" id="subject" name="subject" value=""><br>
+        <label for="new_message">message:</label><br>
+ <textarea id="new_message" name="new_message" placeholder="Write something.." style="height:200px"></textarea>
+
+  <input type="submit" value="Submit">
+</form>
+
+
+{%endblock%}

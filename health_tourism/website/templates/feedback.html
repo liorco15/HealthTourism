@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%block content%}
+<title>Leave a feedback</title>
+<nav class="navbar navbar-expand-lg">
+  <a class="active" href="home">Home</a>
+</nav>
+</head>
+<body>
+
+<h2>Leave a feedback </h2>
+<form method="POST" action="{% url 'feedback' %}">
+  {% csrf_token %}
+<!--<form action="/action_page.php">-->
+<form>
+  <label for="first_name">First name:</label><br>
+  <input type="text" id="first_name" name="first_name" value=""><br>
+  <label for="last_name">Last name:</label><br>
+  <input type="text" id="last_name" name="last_name" value=""><br><br>
+ <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
+  <input type="submit" value="Submit">
+</form>
+</form>
+
+ {%endblock%}

@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block content%}
+<title>New documentation</title>
+<nav class="navbar navbar-expand-lg">
+  <a class="active" href="home">Home</a>
+</nav>
+<h1>New documentation for a meeting </h1>
+<form method="POST" action="{% url 'documentation' %}">
+    {% csrf_token %}
+
+<!--        <form action="/action_page.php">-->
+<!--          <label for="datebox">Enter Meeting date:</label>-->
+<!--          <input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>-->
+<!--          <label for="lname">First name:</label><br>-->
+
+    <select id="patients" name="patients">
+    {% for item in patients %}
+    <option name="user_name" value="{{ item.passport }}">{{ item.first_name }} {{ item.last_name }}</option>
+    {% endfor %}
+    </select>
+        <br>
+        <label>Reason for contacting a doctor:</label><br>
+            <textarea id="reason_w" name="reason_why" rows="5" cols="20"></textarea>
+        <br>
+         <label>Meeting documentation:</label><br>
+            <textarea id="meeting" name="meeting" rows="5" cols="20"></textarea>
+        <br><br>
+            <button type="submit" class="btn btn-outline-primary">Save</button>
+    </form>
+
+{%endblock%}
