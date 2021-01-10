@@ -5,8 +5,8 @@ from .models import Patient, SignUp, Feedback, Event, Documentation, Messages, P
 
 class CreateUserForm(forms.ModelForm):
     class Meta:
-        model = Profile
-        fields = ['first_name', 'last_name', 'birth_date', 'gender', 'email', 'phone_number', 'country']
+        model = Patient
+        fields = ['first_name', 'last_name']
 
 
 class SignUpForm(forms.ModelForm):
@@ -29,14 +29,14 @@ class PatientForm(forms.ModelForm):
 
 class DocumentationP(forms.ModelForm):
     class Meta:
-        model = Documentation
-        fields = ['first_name', 'last_name','reason_why','meeting','diagnosis']
+        model = Patient
+        fields = ['first_name', 'last_name']
 
 
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['name','date']
+        fields = ['name', 'date']
 
 
 class MessageForm(forms.ModelForm):

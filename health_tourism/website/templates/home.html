@@ -2,7 +2,7 @@
 {%block content%}
 <title>Health Tourism</title>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -45,6 +45,14 @@
           <form method="POST" action="{% url 'contact_doctor' %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-outline-primary">Create new message</button>
+          &nbsp;&nbsp;
+            </form>
+        </li>
+           &nbsp;&nbsp;
+          <li class="nav-item">
+          <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary">Logout</button>
           &nbsp;&nbsp;
             </form>
         </li>

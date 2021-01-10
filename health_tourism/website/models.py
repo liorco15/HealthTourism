@@ -67,6 +67,7 @@ class Feedback(models.Model):
     """
     Feedback messages from the patients.
     """
+    object = None
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     message = models.CharField(max_length=250)
@@ -122,7 +123,7 @@ class Event(Timestamped):
 
 class Messages(models.Model):
     objects = None
-    subject = models.CharField(max_length=20, default='SOME STRING')
+    subject = models.CharField(max_length=20, default='SomeString')
     new_message = models.CharField(max_length=100)
 
     def __init__(self, *args, **kwargs):
@@ -142,11 +143,14 @@ class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=20, blank=True)
-    birth_date = models.DateField(null=True)
+    birth_date = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=10, blank=True)
     email = models.EmailField(max_length=30, blank=True)
     phone_number = models.CharField(max_length=50, blank=True)
     country = models.CharField(max_length=50, blank=True)
+    reason_why = models.CharField(max_length=50, default='a', blank=True)
+    meeting = models.CharField(max_length=50, default='a', blank=True)
+    diagnosis = models.CharField(max_length=50, default='a', blank=True)
 
     def __str__(self):
         return str(self.user)

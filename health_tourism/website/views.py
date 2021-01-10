@@ -114,12 +114,19 @@ def history(request):
 
 def documentation(request):
     if request.method == "POST":
+        # patient = request.POST['patients']
+        # reason_why = request.POST['reason_why']
+        # meeting = request.POST['meeting']
+        # diagnosis = request.POST['diagnosis']
+        # user_search = Profile.objects.filter(
+        #     Q(first_name=full_name_fix(patient)[0]) & Q(last_name=full_name_fix(patient)[1]))
         form = DocumentationP(request.POST or None)
         if form.is_valid():
             form.save()
             return render(request, 'home.html', {})
         return render(request, 'documentation.html', {})
     else:
+        # profiles = Profile.objects.all()
         return render(request, 'documentation.html', {})
 
 
@@ -163,4 +170,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/')
+    return redirect('login.html')

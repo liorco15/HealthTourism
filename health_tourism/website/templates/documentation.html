@@ -1,9 +1,9 @@
 {%extends 'base.html'%}
 {%block content%}
 <title>New documentation</title>
-<div class="topnav">
+<nav class="navbar navbar-expand-lg">
   <a class="active" href="home">Home</a>
-</div>
+</nav>
 <h1>New documentation for a meeting </h1>
 <form method="POST" action="{% url 'documentation' %}">
     {% csrf_token %}
@@ -12,26 +12,26 @@
 <!--          <label for="datebox">Enter Meeting date:</label>-->
 <!--          <input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>-->
 <!--          <label for="lname">First name:</label><br>-->
+
 <form>
-        <label for="first_name">First name:</label><br>
+       <label for="first_name">First name:</label><br>
         <input type="text" id="first_name" name="first_name" value=""><br>
 
         <label for="first_name">Last name:</label><br>
         <input type="text" id="last name:" name="last name:" value=""><br>
-
-        <label for="first_name">Reason for contacting a doctor:</label><br>
+        <br>
+        <label>Reason for contacting a doctor:</label><br>
             <textarea id="reason_w" name="reason_why" rows="5" cols="20"></textarea>
         <br>
-         <label for="first_name">Meeting documentation:</label><br>
+         <label>Meeting documentation:</label><br>
             <textarea id="meeting" name="meeting" rows="5" cols="20"></textarea>
         <br>
-        <label for="first_name">diagnosis:</label><br>
+        <label>diagnosis:</label><br>
             <textarea id="diagnosis:" name="diagnosis:" rows="5" cols="20"></textarea>
           <br><br>
             <button type="submit" class="btn btn-outline-primary">Save</button>
             <button type="submit" class="btn btn-outline-primary">Save and Print</button>
-
-</form>
     </form>
+</form>
 
 {%endblock%}
