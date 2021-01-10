@@ -1,11 +1,11 @@
 from django import forms
 from django.contrib.auth import authenticate, get_user_model
-from .models import Patient, SignUp, Feedback, Event, Documentation, Messages, Profile
+from .models import SignUp, Feedback, Event, Documentation, Messages, Profile, Requests
 
 
 class CreateUserForm(forms.ModelForm):
     class Meta:
-        model = Patient
+        model = Profile
         fields = ['first_name', 'last_name']
 
 
@@ -21,16 +21,10 @@ class FeedbackForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'message']
 
 
-class PatientForm(forms.ModelForm):
-    class Meta:
-        model = Patient
-        fields = ['first_name']
-
-
 class DocumentationP(forms.ModelForm):
     class Meta:
-        model = Patient
-        fields = ['first_name', 'last_name']
+        model = Profile
+        fields = ['first_name', 'last_name', 'passport', 'reason_why', 'meeting']
 
 
 class EventForm(forms.ModelForm):
@@ -90,3 +84,9 @@ class UserRegisterForm(forms.ModelForm):
         if email_qs.exists():
             raise forms.ValidationError("This email is already being used")
         return super(UserRegisterForm, self).clean(*args, **kwargs)
+
+
+class RequestForm(forms.ModelForm):
+    class Meta:
+        model = Requests
+        fields = ['subject', 'full_name', 'passport_num', 'request']

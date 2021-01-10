@@ -25,18 +25,6 @@ class Documentation(models.Model):
         return self.first_name + ' ' + self.last_name
 
 
-class Patient(models.Model):
-    """
-    creates new users.
-    """
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    objects = models.Manager()
-
-    def __str__(self):
-        return self.first_name + ' ' + self.last_name
-
-
 class SignUp(models.Model):
     """
     contact form / sign up
@@ -122,7 +110,7 @@ class Event(Timestamped):
 
 
 class Messages(models.Model):
-    # objects = None
+    objects = None
     subject = models.CharField(max_length=20)
     new_message = models.CharField(max_length=100)
 
@@ -143,14 +131,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=20, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-    gender = models.CharField(max_length=10, blank=True)
-    email = models.EmailField(max_length=30, blank=True)
-    phone_number = models.CharField(max_length=50, blank=True)
-    country = models.CharField(max_length=50, blank=True)
-    reason_why = models.CharField(max_length=50, default='a', blank=True)
-    meeting = models.CharField(max_length=50, default='a', blank=True)
-    diagnosis = models.CharField(max_length=50, default='a', blank=True)
+    passport = models.CharField(max_length=20, blank=True)
+    reason_why = models.CharField(max_length=40, default='a', blank=True)
+    meeting = models.CharField(max_length=40, default='a', blank=True)
 
     def __str__(self):
         return str(self.user)
@@ -165,3 +148,14 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class Requests(models.Model):
+    objects = None
+    subject = models.CharField(max_length=20, default='SOME STRING')
+    full_name = models.CharField(max_length=20)
+    passport_num = models.CharField(max_length=20)
+    request = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.subject + ' ' + self.full_name + ' ' + self.passport_num + ' ' + self.request

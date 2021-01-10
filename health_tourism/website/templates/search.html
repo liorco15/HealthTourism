@@ -101,7 +101,7 @@ body {
          <form method="POST" action="{% url 'history' %}">
           {% csrf_token %}
         <input type="hidden" name="user_name" value="{{ item.first_name }}">
-         <button type="submit" class="btn btn-outline-primary" name="user_name" value="{{ item.first_name }} {{item.last_name}}"><br>{{ item.first_name }} {{ item.last_name }}</br>
+         <button type="submit" class="btn btn-outline-primary" name="passport_number" value="{{ item.passport }}"><br>{{ item.first_name }} {{ item.last_name }}</br>
          </button>
           &nbsp;&nbsp;
 

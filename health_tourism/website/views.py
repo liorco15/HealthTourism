@@ -4,33 +4,42 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db.models import Q
 from health_tourism.functions import full_name_fix, name_fix
-from .forms import SignUpForm, FeedbackForm, Patient, EventForm, DocumentationP, MessageForm, UserLoginForm
-from .models import Event, Messages, Documentation, Profile
-from django.core.exceptions import ObjectDoesNotExist
+from .forms import SignUpForm, FeedbackForm, EventForm, MessageForm, UserLoginForm, RequestForm
+from .models import Event, Messages, Profile
 
 
 def create(request):
-    # if request.method == "POST":
-    #     form = CreateUserForm(request.POST or None)
-    #     if form.is_valid():
-    #         form.save()
-    #     return render(request, 'create.html', {})
-    # else:
-    #     return render(request, 'create.html', {})
-
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
-        # form2 = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            # form2.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+            flag = 0
+            update_patient(request, user, flag)
             return render(request, 'home.html', {})
     else:
         form = UserCreationForm()
     return render(request, 'create.html', {'form': form})
+
+
+def update_patient(request, user2, flag):
+    if flag == 1:
+        if request.method == 'POST':
+            patient = request.POST['user_name']
+            user = Profile.objects.get(username=patient)
+            f_name = request.POST['first_name']
+            l_name = request.POST['last_name']
+            passport = request.POST['passport']
+            user.first_name = f_name
+            user.last_name = l_name
+            user.passport = passport
+            user.save()
+            return
+    else:
+        flag = 1
+        return render(request, 'update_patient.html', {'patient': user2})
 
 
 def signup(request):
@@ -101,33 +110,27 @@ def home(request):
 
 
 def history(request):
-    # user_history = Documentation.objects.all
-    # user_history = Profile.objects.all().select_related('profile')
-    patient = request.POST['user_name']
-    # if 'Donald' in request.GET:
-    #     user_history = Profile.objects.get(first_name="Donald")
-    user_search = Profile.objects.filter(
-        Q(first_name=full_name_fix(patient)[0]) & Q(last_name=full_name_fix(patient)[1]))
-    return render(request, 'history.html', {'history': user_search})
-    # return render(request, 'search.html', {})
+    if request.method == "POST":
+        patient = request.POST['passport_number']
+        user = Profile.objects.filter(passport=patient)
+        return render(request, 'history.html', {'history': user})
+    else:
+        return render(request, 'search.html', {})
 
 
 def documentation(request):
     if request.method == "POST":
-        # patient = request.POST['patients']
-        # reason_why = request.POST['reason_why']
-        # meeting = request.POST['meeting']
-        # diagnosis = request.POST['diagnosis']
-        # user_search = Profile.objects.filter(
-        #     Q(first_name=full_name_fix(patient)[0]) & Q(last_name=full_name_fix(patient)[1]))
-        form = DocumentationP(request.POST or None)
-        if form.is_valid():
-            form.save()
-            return render(request, 'home.html', {})
-        return render(request, 'documentation.html', {})
+        patient = request.POST['patients']
+        reason_why = request.POST['reason_why']
+        meeting = request.POST['meeting']
+        user = Profile.objects.get(passport=patient)
+        user.reason_why = reason_why
+        user.meeting = meeting
+        user.save()
+        return render(request, 'home.html', {})
     else:
-        # profiles = Profile.objects.all()
-        return render(request, 'documentation.html', {})
+        profiles = Profile.objects.all()
+        return render(request, 'documentation.html', {'patients': profiles})
 
 
 def appointment(request):
@@ -171,3 +174,14 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login.html')
+
+
+def request_m(request):
+    if request.method == "POST":
+        form = RequestForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return render(request, 'home.html', {})
+        return render(request, 'request_m.html', {})
+    else:
+        return render(request, 'request_m.html', {})

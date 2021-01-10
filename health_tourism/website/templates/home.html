@@ -3,6 +3,9 @@
 <title>Health Tourism</title>
 
 <nav class="navbar navbar-expand-lg">
+  <a class="active" href="">Home</a>
+</nav>
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,18 +17,16 @@
           <form method="POST" action="{% url 'feedback' %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-outline-primary">Leave feedback </button>
-          &nbsp;&nbsp;
           </form>
          </li>
-
+        &nbsp;&nbsp;
         <li class="nav-item">
          <form method="POST" action="{% url 'create' %}">
           {% csrf_token %}
          <button type="submit" class="btn btn-outline-primary">Create user</button>
-          &nbsp;&nbsp;
          </form>
         </li>
-
+        &nbsp;&nbsp;
         <li class="nav-item">
            <form method="POST" action="{% url 'appointment' %}">
             {% csrf_token %}
@@ -33,14 +34,15 @@
             &nbsp;&nbsp;
            </form>
         </li>
+          &nbsp;&nbsp;
           <li class="nav-item">
-          <form method="POST" action="{% url 'documentation' %}">
+          <form method="GET" action="{% url 'documentation' %}">
               {% csrf_token %}
           <button type="submit" class="btn btn-outline-primary"> Create Patient documentation</button>&nbsp;&nbsp;
             &nbsp;&nbsp;
            </form>
-
-
+          </li>
+          &nbsp;&nbsp;
           <li class="nav-item">
           <form method="POST" action="{% url 'contact_doctor' %}">
           {% csrf_token %}
@@ -48,7 +50,15 @@
           &nbsp;&nbsp;
             </form>
         </li>
-           &nbsp;&nbsp;
+          &nbsp;&nbsp;
+          <li class="nav-item">
+          <form method="POST" action="{% url 'request_m' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary">Send a request to minestry of health</button>
+          &nbsp;&nbsp;
+            </form>
+        </li>
+          &nbsp;&nbsp;
           <li class="nav-item">
           <form method="POST" action="{% url 'login' %}">
           {% csrf_token %}
@@ -57,6 +67,7 @@
             </form>
         </li>
       </ul>
+        &nbsp;&nbsp;
       <div class="d-flex">
         <form method="POST" action="{% url 'search' %}">
             {% csrf_token %}
@@ -107,7 +118,7 @@
     <h1> new messages </h1>
     {% for x in messages %}
     <div class="alert alert-secondary" role="alert">
-      {{x.new_message}} {{x.subject}}
+      {{x.subject}} {{x.new_message}}
     </div>
      {% endfor %}
     {%endblock%}
