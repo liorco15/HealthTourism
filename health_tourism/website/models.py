@@ -13,13 +13,13 @@ class Documentation(models.Model):
     meeting = models.CharField(max_length=250)
     diagnosis = models.CharField(max_length=250)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.completed = False
-        self.mark = 1
-        self.get_absolute = 1
-        self.slug = 'ok'
-        self.id = 1
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.completed = False
+    #     self.mark = 1
+    #     self.get_absolute = 1
+    #     self.slug = 'ok'
+    #     self.id = 1
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -50,14 +50,14 @@ class SignUp(models.Model):
     country = models.CharField(max_length=50)
     reason_for_referral = models.CharField(max_length=250)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.completed = False
-        self.mark = 1
-        self.get_absolute = 1
-        self.slug = 'ok'
-        self.id = 1
-        self.objects = None
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.completed = False
+    #     self.mark = 1
+    #     self.get_absolute = 1
+    #     self.slug = 'ok'
+    #     self.id = 1
+    #     self.objects = None
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -72,14 +72,14 @@ class Feedback(models.Model):
     last_name = models.CharField(max_length=20)
     message = models.CharField(max_length=250)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.completed = False
-        self.mark = 1
-        self.get_absolute = 1
-        self.slug = 'ok'
-        self.id = 1
-        self.objects = None
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.completed = False
+    #     self.mark = 1
+    #     self.get_absolute = 1
+    #     self.slug = 'ok'
+    #     self.id = 1
+    #     self.objects = None
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -109,30 +109,30 @@ class Event(Timestamped):
         verbose_name_plural = 'events'
         ordering = ('-created_at',)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.completed = False
-        self.mark = 1
-        self.get_absolute = 1
-        self.slug = 'ok'
-        self.id = 1
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.completed = False
+    #     self.mark = 1
+    #     self.get_absolute = 1
+    #     self.slug = 'ok'
+    #     self.id = 1
 
     def __str__(self):
         return self.name + ' '
 
 
 class Messages(models.Model):
-    objects = None
-    subject = models.CharField(max_length=20, default='SomeString')
+    # objects = None
+    subject = models.CharField(max_length=20)
     new_message = models.CharField(max_length=100)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.completed = False
-        self.mark = True
-        self.get_absolute = 1
-        self.slug = 'ok'
-        self.id = 1
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.completed = False
+    #     self.mark = True
+    #     self.get_absolute = 1
+    #     self.slug = 'ok'
+    #     self.id = 1
 
     def __str__(self):
         return self.subject + ' ' + self.new_message
